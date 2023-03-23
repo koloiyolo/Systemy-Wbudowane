@@ -28,21 +28,20 @@ const int buttonPin = 2;     // the number of the pushbutton pin
 
 // variables will change:
 int buttonState = 0;
-int i = 8; 
-int last = LOW;
+int i=4; //inicjalizacja pierwsxzego wyjscia
+int last = LOW; //zmienne pomocnicze
 int lastb = LOW;
 // variable for reading the pushbutton status
 
 void setup() {
   // initialize the LED pin as an output:
-  pinMode(i, OUTPUT);
   // initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT_PULLUP);
 }
 
 void loop() {
   if(i == 13)i= 4;
- 
+  pinMode(i, OUTPUT); //za kazdym razem inicjalizowac pinmode dla kazdego wyjscia
   buttonState = digitalRead(buttonPin);
   if(buttonState == HIGH && lastb != buttonState && last == LOW){
     // turn LED on:
@@ -53,7 +52,7 @@ void loop() {
    last = LOW;
    }
    lastb = buttonState;
-   digitalWrite(i, last);
+   digitalWrite(i, last); //wywolanie swiecenia
    delay(100);
 }
  
